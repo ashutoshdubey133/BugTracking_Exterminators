@@ -2,7 +2,7 @@ package in.co.hsbc.bts.model;
 
 import java.util.Set;
 
-public class Developer {
+public class Developer extends User{
 	private Set<Bug> bugs; //Bugs assigned to the Developer
 	private Team team;
 	
