@@ -12,6 +12,11 @@ import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.view.BtsView;
 
 public class BtsViewImpl implements BtsView,AutoCloseable{
+	Scanner sc;
+	
+	public BtsViewImpl(){
+		sc = new Scanner(System.in);
+	}
 	
 	public int showRoles() 
 	{	
@@ -23,47 +28,42 @@ public class BtsViewImpl implements BtsView,AutoCloseable{
 		int option = sc.nextInt();
 		return option;
 	}
-
-	public ProjectManager addProjectManager() {
-     
-		System.out.println("Enter your Name");
-      
-		return null;
-	}
 	
 	public Bug addBug(){
-		
+		Bug b = new Bug();
+		System.out.println("Enter Bug Title:");
+		b.setTitle(sc.nextLine());
+		System.out.println("Enter Bug Description:");
+		b.setDescription(sc.nextLine());
+		System.out.println("Enter Project Id of Bug:");
+		System.out.println("Enter Your Tester Id:");
+		System.out.println("Enter Bug Severity Level:");
 		return null;
 	}
 	
 	public Project addProject(){
-		
+		// TODO: complete
 		return null;
-		
 	}
 
 	@Override
 	public void close() throws Exception {
-		// TODO Auto-generated method stub
-		
+		sc.close();
 	}
 
 	@Override
 	public void viewAllBug(Set<Bug> b) {
-		// TODO Auto-generated method stub
-		
+		b.forEach(System.out::println);
 	}
 
 	@Override
 	public void viewAllTeams(Set<Team> t) {
-		// TODO Auto-generated method stub
-		
+		t.forEach(System.out::println);
 	}
 
 	@Override
 	public void viewProject(Project p) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(p);
 	}
 
 	@Override
@@ -74,32 +74,29 @@ public class BtsViewImpl implements BtsView,AutoCloseable{
 
 	@Override
 	public void viewAllDevelopers(Set<Developer> d) {
-		// TODO Auto-generated method stub
-		
+		d.forEach(System.out::println);
 	}
 
 	@Override
 	public void viewAllTesters(Set<Tester> t) {
-		// TODO Auto-generated method stub
-		
+		t.forEach(System.out::println);
 	}
 
 	@Override
 	public int markProjectForClosing() {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Enter Project Id For Closing");
+		return sc.nextInt();
 	}
 
 	@Override
-	public void diplayBugs(Set<Bug> b) {
-		// TODO Auto-generated method stub
-		
+	public void diplayBugs(Set<Bug> s) {
+		s.forEach(System.out::println);
 	}
 
 	@Override
 	public int closeBug() {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Enter Bug Id For Closing");
+		return sc.nextInt();
 	}
 
 	@Override
@@ -115,33 +112,15 @@ public class BtsViewImpl implements BtsView,AutoCloseable{
 	}
 
 	@Override
-	public void displayBugsWhichAreMarkedForClosing(Set<Bug> s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void viewBugsAssigned(Set<Bug> b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void viewTeam(Team t) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(t);
 	}
 
-	@Override
-	public void viewBugsOpened(Set<Bug> s) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int markBugToClose() {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Enter The Bug Id To Close");
+		return sc.nextInt();
 	}
 	
 

@@ -29,19 +29,9 @@ public interface BtsView {
 	int closeBug();//return project id from user (accept)
 	Bug reassigningBug();//Bug id,Developer id (User )-->array return krna
 	Bug assigningBug();//Bug id,Developer id (User )-->array return krna
-	void displayBugsWhichAreMarkedForClosing(Set<Bug>s); //loop
 	
 	//Developer
-	void viewBugsAssigned(Set<Bug>b);
 	void viewTeam(Team t);//print team
-	void viewBugsOpened(Set<Bug> s);//loop laga kr print
 	int markBugToClose();//accept bug id return id
-	
-	
-	
-	
-	
-	
-	
 	
 }
