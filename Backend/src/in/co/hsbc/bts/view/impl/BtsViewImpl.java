@@ -6,12 +6,11 @@ import java.util.Set;
 import in.co.hsbc.bts.model.Bug;
 import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
-import in.co.hsbc.bts.model.ProjectManager;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.view.BtsView;
 
-public class BtsViewImpl implements BtsView,AutoCloseable{
+public class BtsViewImpl implements BtsView{
 	Scanner sc;
 	
 	public BtsViewImpl(){
@@ -24,7 +23,8 @@ public class BtsViewImpl implements BtsView,AutoCloseable{
 		System.out.println("1.Project Manager");
 		System.out.println("2.Developer");
 		System.out.println("3.Tester");
-		Scanner sc= new Scanner(System.in);
+		System.out.println("-1. Exit");
+		
 		int option = sc.nextInt();
 		return option;
 	}
@@ -120,6 +120,47 @@ public class BtsViewImpl implements BtsView,AutoCloseable{
 	@Override
 	public int markBugToClose() {
 		System.out.println("Enter The Bug Id To Close");
+		return sc.nextInt();
+	}
+
+	@Override
+	public void showMessage(String str) {
+		System.out.println(str);
+	}
+
+	@Override
+	public void showError(String str) {
+		System.err.println(str);
+	}
+
+	@Override
+	public int displayProjectManagerOptions() {
+		System.out.println("1. View Projects");
+		System.out.println("2. Add Project");
+		System.out.println("3. View All Developers");
+		System.out.println("4. View All Testers");
+		System.out.println("5. Close Project");
+		System.out.println("6. View All Bugs");
+		System.out.println("7. View All Bugs Marked For Closing");
+		System.out.println("8. Close Bug");
+		System.out.println("9. Assign Bug To Developer");
+		System.out.println("10. ReAssign Bug To Developer");
+		System.out.println("-1. Exit");
+		return sc.nextInt();
+	}
+
+	@Override
+	public int displayDeveloperOptions() {
+		System.out.println("1. Add Bug");
+		System.out.println("1. View All Bugs");
+		System.out.println("3. View All Teams");
+		return sc.nextInt();
+	}
+
+	@Override
+	public int displayTesterOptions() {
+		System.out.println("1. View Team");
+		System.out.println("2. View All Bugs");
 		return sc.nextInt();
 	}
 	

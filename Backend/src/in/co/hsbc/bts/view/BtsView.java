@@ -8,7 +8,7 @@ import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 
-public interface BtsView {
+public interface BtsView  extends AutoCloseable{
 
 	//Roles
 	int showRoles();
@@ -34,4 +34,13 @@ public interface BtsView {
 	void viewTeam(Team t);//print team
 	int markBugToClose();//accept bug id return id
 	
+	//GeneralMessagesAndErrors
+	void showMessage(String str);
+	void showError(String str);
+
+	int displayProjectManagerOptions();
+
+	int displayDeveloperOptions();
+
+	int displayTesterOptions();
 }
