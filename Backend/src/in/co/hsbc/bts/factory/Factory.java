@@ -19,7 +19,7 @@ import in.co.hsbc.bts.view.impl.BtsViewImpl;
 public class Factory {
 	
 	public static BtsService getBtsService() {
-		return new BtsServiceImpl(new BugDaoImpl(), new DeveloperDaoImpl(), new ProjectDaoImpl(), new ProjectManagerDaoImpl(), new TeamDaoImpl(), new TesterDaoImpl(), new UserDaoImpl());
+		return new BtsServiceImpl( new UserDaoImpl(),new ProjectManagerDaoImpl(), new DeveloperDaoImpl(),  new TesterDaoImpl(),  new ProjectDaoImpl(), new BugDaoImpl(),new TeamDaoImpl());
 	}
 	
 	public static BtsView getBtsView() {
