@@ -105,14 +105,22 @@ public class BtsViewImpl implements BtsView{
 
 	@Override
 	public BugAssignDTO reassigningBug() {
-		// TODO Auto-generated method stub
-		return null;
+		BugAssignDTO bug = new BugAssignDTO();
+		System.out.println("Enter Bug Id");
+		bug.setBugId(sc.nextInt());
+		System.out.println("Enter Developer Id");
+		bug.setDeveloperId(sc.nextInt());
+		return bug;
 	}
 
 	@Override
 	public BugAssignDTO assigningBug() {
-		// TODO Auto-generated method stub
-		return null;
+		BugAssignDTO bug = new BugAssignDTO();
+		System.out.println("Enter Bug Id");
+		bug.setBugId(sc.nextInt());
+		System.out.println("Enter Developer Id");
+		bug.setDeveloperId(sc.nextInt());
+		return bug;
 	}
 
 	@Override

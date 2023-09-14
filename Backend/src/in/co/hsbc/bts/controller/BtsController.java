@@ -26,7 +26,6 @@ public class BtsController{
 	public static void main(String[] args) {
 		
 		try{
-
 			int option = 0;
 			do {
 				LoginDTO login =view.getLogin();
@@ -191,7 +190,6 @@ public class BtsController{
 			case 1:
 				BugDTO bugDTO = view.addBug();
 				Bug bug = new Bug();
-				BugSeverityLevel bsl;
 				if(service.createBug(bugDTO.getTitle(), bug.getDescription(), service.getProjectById(bugDTO.getProjectId()), BugSeverityLevel.valueOf(bugDTO.getSeverityLevel().toLowerCase())))
 					view.showMessage("Bug created Successfully");
 				else
