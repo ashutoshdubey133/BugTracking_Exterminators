@@ -6,6 +6,7 @@ public abstract class User {
 	private String userName;
 	private String userEmail;
 	private UserType userType;
+	private String password;
 	
 	public int getUserId() {
 		return userId;
@@ -31,6 +32,11 @@ public abstract class User {
 	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
-
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 }

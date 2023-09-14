@@ -8,6 +8,8 @@ import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
+import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.LoginDTO;
 import in.co.hsbc.bts.view.BtsView;
 
 public class BtsViewImpl implements BtsView{
@@ -89,7 +91,7 @@ public class BtsViewImpl implements BtsView{
 	}
 
 	@Override
-	public void diplayBugs(Set<Bug> s) {
+	public void displayBugs(Set<Bug> s) {
 		s.forEach(System.out::println);
 	}
 
@@ -100,13 +102,13 @@ public class BtsViewImpl implements BtsView{
 	}
 
 	@Override
-	public Bug reassigningBug() {
+	public BugAssignDTO reassigningBug() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bug assigningBug() {
+	public BugAssignDTO assigningBug() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -152,7 +154,7 @@ public class BtsViewImpl implements BtsView{
 	@Override
 	public int displayDeveloperOptions() {
 		System.out.println("1. Add Bug");
-		System.out.println("1. View All Bugs");
+		System.out.println("2. View All Bugs");
 		System.out.println("3. View All Teams");
 		return sc.nextInt();
 	}
@@ -162,6 +164,30 @@ public class BtsViewImpl implements BtsView{
 		System.out.println("1. View Team");
 		System.out.println("2. View All Bugs");
 		return sc.nextInt();
+	}
+
+	@Override
+	public LoginDTO getLogin() {
+		System.out.print("Welcome To Bug Tracking System");
+		System.out.println("Enter Any Key To Login");
+		System.out.println("Enter -1 To Logout");
+		int login_out = sc.nextInt();
+		
+		if(login_out == -1)
+			return null;
+		
+		sc.nextLine();
+		System.out.print("Enter Your Email");
+		String email = sc.nextLine();
+		System.out.print("Enter Your Password");
+		String password = sc.nextLine();
+		
+		return new LoginDTO(email,password);
+	}
+
+	@Override
+	public void displayProjects(Set<Project> projects) {
+		projects.forEach(System.out::println);
 	}
 	
 

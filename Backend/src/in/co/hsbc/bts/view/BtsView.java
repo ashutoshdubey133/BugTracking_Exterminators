@@ -7,6 +7,8 @@ import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
+import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.LoginDTO;
 
 public interface BtsView  extends AutoCloseable{
 
@@ -25,10 +27,10 @@ public interface BtsView  extends AutoCloseable{
 	void viewAllDevelopers(Set<Developer> d);
 	void viewAllTesters(Set<Tester>t);
 	int markProjectForClosing(); //return project id from user (accept)
-	void diplayBugs(Set<Bug>b);
+	void displayBugs(Set<Bug>b);
 	int closeBug();//return project id from user (accept)
-	Bug reassigningBug();//Bug id,Developer id (User )-->array return krna
-	Bug assigningBug();//Bug id,Developer id (User )-->array return krna
+	BugAssignDTO reassigningBug();//Bug id,Developer id (User )-->array return krna
+	BugAssignDTO assigningBug();//Bug id,Developer id (User )-->array return krna
 	
 	//Developer
 	void viewTeam(Team t);//print team
@@ -43,4 +45,8 @@ public interface BtsView  extends AutoCloseable{
 	int displayDeveloperOptions();
 
 	int displayTesterOptions();
+
+	LoginDTO getLogin();
+
+	void displayProjects(Set<Project> projects);
 }

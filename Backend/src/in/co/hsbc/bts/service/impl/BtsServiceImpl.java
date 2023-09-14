@@ -1,6 +1,5 @@
 package in.co.hsbc.bts.service.impl;
 
-import java.util.Date;
 import java.util.Set;
 
 import in.co.hsbc.bts.model.Bug;
@@ -9,6 +8,8 @@ import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.ProjectManager;
 import in.co.hsbc.bts.model.Tester;
+import in.co.hsbc.bts.model.User;
+import in.co.hsbc.bts.model.dto.LoginDTO;
 import in.co.hsbc.bts.service.BtsService;
 
 public class BtsServiceImpl implements BtsService{
@@ -110,7 +111,7 @@ public class BtsServiceImpl implements BtsService{
 	}
 
 	@Override
-	public boolean createProject(String projectName, String description, Date startDate) {
+	public boolean createProject(Project project) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -161,6 +162,48 @@ public class BtsServiceImpl implements BtsService{
 	public boolean reAssgnBug(int bugId, Developer developer) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public User getUserByLogin(LoginDTO login) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Project> getProjectsByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Developer> getDevelopersByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Tester> getTestersByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean closeProject(int projectIdToClose) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Set<Bug> getBugsByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bug> getBugsMarkedForClosingByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,6 +1,5 @@
 package in.co.hsbc.bts.service;
 
-import java.util.Date;
 import java.util.Set;
 
 import in.co.hsbc.bts.model.Bug;
@@ -9,6 +8,8 @@ import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.ProjectManager;
 import in.co.hsbc.bts.model.Tester;
+import in.co.hsbc.bts.model.User;
+import in.co.hsbc.bts.model.dto.LoginDTO;
 
 public interface BtsService {
 	boolean createManager(ProjectManager projectManager);
@@ -33,7 +34,7 @@ public interface BtsService {
 	boolean deleteBugById(int id);
 	
 	
-	boolean createProject(String projectName, String description, Date startDate);
+	boolean createProject(Project project);
 	Project getProjectById(int id);
 	boolean updateProject(Project project);
 	boolean deleteProjectById(int id);
@@ -43,6 +44,13 @@ public interface BtsService {
 	boolean bugMarkedToClose(int bugId);
 	boolean closeBug(int bugId);
 	boolean reAssgnBug(int bugId,Developer developer);
+	User getUserByLogin(LoginDTO login);
+	Set<Project> getProjectsByProjectManager(ProjectManager pm);
+	Set<Developer> getDevelopersByProjectManager(ProjectManager pm);
+	Set<Tester> getTestersByProjectManager(ProjectManager pm);
+	boolean closeProject(int projectIdToClose);
+	Set<Bug> getBugsByProjectManager(ProjectManager pm);
+	Set<Bug> getBugsMarkedForClosingByProjectManager(ProjectManager pm);
 	
 	
 }

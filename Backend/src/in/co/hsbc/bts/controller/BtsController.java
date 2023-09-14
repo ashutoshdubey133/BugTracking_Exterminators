@@ -1,33 +1,63 @@
 package in.co.hsbc.bts.controller;
 
+import java.util.Set;
+
+import in.co.hsbc.bts.model.Bug;
+import in.co.hsbc.bts.model.Developer;
+import in.co.hsbc.bts.model.Project;
+import in.co.hsbc.bts.model.ProjectManager;
+import in.co.hsbc.bts.model.Tester;
+import in.co.hsbc.bts.model.User;
+import in.co.hsbc.bts.model.UserType;
+import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.LoginDTO;
+import in.co.hsbc.bts.service.BtsService;
+import in.co.hsbc.bts.service.impl.BtsServiceImpl;
 import in.co.hsbc.bts.view.BtsView;
 import in.co.hsbc.bts.view.impl.BtsViewImpl;
 
 public class BtsController{
 
+	private static BtsService service = new BtsServiceImpl();
+	private static BtsView view = new BtsViewImpl();
+	
 	public static void main(String[] args) {
-
-		try(BtsView view = new BtsViewImpl()){
+		
+		try{
 
 			int option = 0;
 			do {
-				option=view.showRoles();
-
+				LoginDTO login =view.getLogin();
+				
+				if(login == null) {
+					option = -1;
+					break;
+				}
+				
+				User user = service.getUserByLogin(login);
+				
+				if(user.getUserType().equals(UserType.ProjectManager))
+					option = 1;
+				else if(user.getUserType().equals(UserType.Developer))
+					option = 2;
+				else if(user.getUserType().equals(UserType.Tester))
+					option = 3;
+					
 				switch(option) {
 
 				//ProjectManager
 				case 1:
-					handleProjectManager(view);
+					handleProjectManager(user);
 					break;
 
 					//Developer
 				case 2:
-					handleDeveloper(view);
+					handleDeveloper(user);
 					break;
 
 					//Tester
 				case 3:
-					handleTester(view);
+					handleTester(user);
 					break;
 
 				case -1:
@@ -41,14 +71,77 @@ public class BtsController{
 
 	}
 
-	private static void handleProjectManager(BtsView view) {
+	private static void handleProjectManager(User user) {
 		int pmOption = 0;
 		do {
 			pmOption = view.displayProjectManagerOptions();
-
+			ProjectManager pm = (ProjectManager) user;
+					
 			switch(pmOption) {
+			//View All Projects Of ProjectManager
 			case 1:
+				Set<Project> projects= service.getProjectsByProjectManager(pm);
+				view.displayProjects(projects);
 				break;
+				
+			case 2:
+				Project project = view.addProject();
+				boolean createProject = service.createProject(project);
+				if(createProject)
+					view.showMessage("Project Created Successfully");
+				else
+					view.showError("Some Error Occured");
+				break;
+				
+			case 3:
+				Set<Developer> devs = service.getDevelopersByProjectManager(pm);
+				view.viewAllDevelopers(devs);
+				break;
+				
+			case 4:
+				Set<Tester> testers = service.getTestersByProjectManager(pm);
+				view.viewAllTesters(testers);
+				break;
+				
+			case 5:
+				int projectIdToClose = view.markProjectForClosing();
+				if(service.closeProject(projectIdToClose))
+					view.showMessage("Project Closed Successfully");
+				else
+					view.showError("Some Error Occured");
+				break;
+				
+			case 6:
+				Set<Bug> bugs = service.getBugsByProjectManager(pm);
+				view.displayBugs(bugs);
+				break;
+				
+			case 7:
+				bugs = service.getBugsMarkedForClosingByProjectManager(pm);
+				view.displayBugs(bugs);
+				break;
+				
+			case 8:
+				int closeBug = view.closeBug();
+				if(service.closeBug(closeBug))
+					view.showMessage("Bug Closed Successfully");
+				else
+					view.showError("Some Error Occured");
+				
+			case 9:
+				BugAssignDTO bugAssignDTO = view.assigningBug();
+				if(service.assignBug(bugAssignDTO.getBugId(), service.getDeveloperById(bugAssignDTO.getDeveloperId())))
+					view.showMessage("Bug Assigned Successfully");
+				else
+					view.showError("Some Error occured");
+
+			case 10:
+				bugAssignDTO = view.reassigningBug();
+				if(service.reAssgnBug(bugAssignDTO.getBugId(), service.getDeveloperById(bugAssignDTO.getDeveloperId())))
+					view.showMessage("Bug Reassigned Successfully");
+				else
+					view.showError("Some Error occured");
+				
 				
 			case -1:
 				break;
@@ -57,7 +150,7 @@ public class BtsController{
 		}while(pmOption != -1);
 	}
 	
-	private static void handleDeveloper(BtsView view) {
+	private static void handleDeveloper(User user) {
 		int devOption = 0;
 		do {
 			devOption = view.displayDeveloperOptions();
@@ -71,7 +164,7 @@ public class BtsController{
 		}while(devOption != -1);
 	}
 	
-	private static void handleTester(BtsView view) {
+	private static void handleTester(User user) {
 		int testerOption = 0;
 		do {
 			testerOption = view.displayTesterOptions();
