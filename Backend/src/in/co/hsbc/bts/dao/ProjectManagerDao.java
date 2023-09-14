@@ -1,5 +1,7 @@
 package in.co.hsbc.bts.dao;
 
+import java.util.Set;
+
 import in.co.hsbc.bts.model.ProjectManager;
 
 public interface ProjectManagerDao {
@@ -7,4 +9,5 @@ public interface ProjectManagerDao {
 	ProjectManager getById(int id);
 	boolean update(ProjectManager projectManager);
 	boolean deleteById(int id);
+	Set<ProjectManager> findAll();
 }
