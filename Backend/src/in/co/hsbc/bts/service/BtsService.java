@@ -11,6 +11,7 @@ import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.User;
 import in.co.hsbc.bts.model.dto.LoginDTO;
+import in.co.hsbc.bts.service.exception.InvalidCredentialsException;
 
 public interface BtsService {
 	boolean createManager(ProjectManager projectManager);
@@ -45,7 +46,7 @@ public interface BtsService {
 	boolean bugMarkedToClose(int bugId);
 	boolean closeBug(int bugId);
 	boolean reAssgnBug(int bugId,Developer developer);
-	User getUserByLogin(LoginDTO login);
+	User getUserByLogin(LoginDTO login) throws InvalidCredentialsException;
 	Set<Project> getProjectsByProjectManager(ProjectManager pm);
 	Set<Developer> getDevelopersByProjectManager(ProjectManager pm);
 	Set<Tester> getTestersByProjectManager(ProjectManager pm);

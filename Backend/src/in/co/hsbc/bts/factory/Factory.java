@@ -4,6 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import in.co.hsbc.bts.dao.impl.BugDaoImpl;
+import in.co.hsbc.bts.dao.impl.DeveloperDaoImpl;
+import in.co.hsbc.bts.dao.impl.ProjectDaoImpl;
+import in.co.hsbc.bts.dao.impl.ProjectManagerDaoImpl;
+import in.co.hsbc.bts.dao.impl.TeamDaoImpl;
+import in.co.hsbc.bts.dao.impl.TesterDaoImpl;
+import in.co.hsbc.bts.dao.impl.UserDaoImpl;
 import in.co.hsbc.bts.service.BtsService;
 import in.co.hsbc.bts.service.impl.BtsServiceImpl;
 import in.co.hsbc.bts.view.BtsView;
@@ -12,7 +19,7 @@ import in.co.hsbc.bts.view.impl.BtsViewImpl;
 public class Factory {
 	
 	public static BtsService getBtsService() {
-		return new BtsServiceImpl();
+		return new BtsServiceImpl(new BugDaoImpl(), new DeveloperDaoImpl(), new ProjectDaoImpl(), new ProjectManagerDaoImpl(), new TeamDaoImpl(), new TesterDaoImpl(), new UserDaoImpl());
 	}
 	
 	public static BtsView getBtsView() {

@@ -2,6 +2,14 @@ package in.co.hsbc.bts.service.impl;
 
 import java.util.Set;
 
+import in.co.hsbc.bts.dao.exception.NoSuchRecordException;
+import in.co.hsbc.bts.dao.impl.BugDaoImpl;
+import in.co.hsbc.bts.dao.impl.DeveloperDaoImpl;
+import in.co.hsbc.bts.dao.impl.ProjectDaoImpl;
+import in.co.hsbc.bts.dao.impl.ProjectManagerDaoImpl;
+import in.co.hsbc.bts.dao.impl.TeamDaoImpl;
+import in.co.hsbc.bts.dao.impl.TesterDaoImpl;
+import in.co.hsbc.bts.dao.impl.UserDaoImpl;
 import in.co.hsbc.bts.model.Bug;
 import in.co.hsbc.bts.model.BugSeverityLevel;
 import in.co.hsbc.bts.model.Developer;
@@ -12,9 +20,28 @@ import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.User;
 import in.co.hsbc.bts.model.dto.LoginDTO;
 import in.co.hsbc.bts.service.BtsService;
+import in.co.hsbc.bts.service.exception.InvalidCredentialsException;
 
 public class BtsServiceImpl implements BtsService{
-
+	
+	BugDaoImpl bugDaoImpl;
+	DeveloperDaoImpl developerDaoImpl;
+	ProjectDaoImpl projectDaoImpl;
+	ProjectManagerDaoImpl projectManagerDaoImpl;
+	TeamDaoImpl teamDaoImpl;
+	TesterDaoImpl testerDaoImpl;
+	UserDaoImpl userDaoImpl;
+	
+	public BtsServiceImpl(BugDaoImpl bugDaoImpl, DeveloperDaoImpl developerDaoImpl, ProjectDaoImpl projectDaoImpl, ProjectManagerDaoImpl projectManagerDaoImpl, TeamDaoImpl teamDaoImpl, TesterDaoImpl testerDaoImpl, UserDaoImpl userDaoImpl) {
+		this.bugDaoImpl = bugDaoImpl;
+		this.developerDaoImpl = developerDaoImpl;
+		this.projectDaoImpl = projectDaoImpl;
+		this.projectManagerDaoImpl = projectManagerDaoImpl;
+		this.teamDaoImpl = teamDaoImpl;
+		this.testerDaoImpl = testerDaoImpl;
+		this.userDaoImpl = userDaoImpl;
+	}
+	
 	@Override
 	public boolean createManager(ProjectManager projectManager) {
 		// TODO Auto-generated method stub
@@ -166,9 +193,14 @@ public class BtsServiceImpl implements BtsService{
 	}
 
 	@Override
-	public User getUserByLogin(LoginDTO login) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUserByLogin(LoginDTO login) throws InvalidCredentialsException {
+		try {
+			User user = userDaoImpl.getByEmail(login.getEmail());
+			return user;
+		} catch (NoSuchRecordException e) {
+			e.printStackTrace();
+			throw new InvalidCredentialsException();
+		}
 	}
 
 	@Override
