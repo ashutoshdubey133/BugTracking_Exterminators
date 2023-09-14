@@ -258,6 +258,7 @@ CREATE TABLE `user_tbl` (
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `userType` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -268,7 +269,7 @@ CREATE TABLE `user_tbl` (
 
 LOCK TABLES `user_tbl` WRITE;
 /*!40000 ALTER TABLE `user_tbl` DISABLE KEYS */;
-INSERT INTO `user_tbl` VALUES (1,'Pranav','pranav@gmail.com',''),(2,'Sunil','sunil@gmail.com',''),(3,'Mohit','mohit@gmail.com',''),(4,'Pritesh','pritesh@gmail.com',''),(5,'Yogesh','yogesh@gmail.com',''),(6,'Ram','ram@gmail.com',''),(7,'Gita','gita@gmail.com',''),(8,'Prachi','prachi@gmail.com',''),(9,'Shivani','shivani@gmail.com','');
+INSERT INTO `user_tbl` VALUES (1,'Pranav','pranav@gmail.com','',''),(2,'Sunil','sunil@gmail.com','',''),(3,'Mohit','mohit@gmail.com','',''),(4,'Pritesh','pritesh@gmail.com','',''),(5,'Yogesh','yogesh@gmail.com','',''),(6,'Ram','ram@gmail.com','',''),(7,'Gita','gita@gmail.com','',''),(8,'Prachi','prachi@gmail.com','',''),(9,'Shivani','shivani@gmail.com','','');
 /*!40000 ALTER TABLE `user_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -281,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-14 19:17:02
+-- Dump completed on 2023-09-14 19:42:38
