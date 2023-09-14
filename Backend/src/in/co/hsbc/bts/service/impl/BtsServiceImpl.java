@@ -7,6 +7,7 @@ import in.co.hsbc.bts.model.BugSeverityLevel;
 import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.ProjectManager;
+import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.User;
 import in.co.hsbc.bts.model.dto.LoginDTO;
@@ -202,6 +203,30 @@ public class BtsServiceImpl implements BtsService{
 
 	@Override
 	public Set<Bug> getBugsMarkedForClosingByProjectManager(ProjectManager pm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Team getTeamByDeveloper(Developer dev) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bug> getBugsByDeveloper(Developer dev) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bug> getBugsByTester(Tester tester) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Team> getTeamsByTester(Tester tester) {
 		// TODO Auto-generated method stub
 		return null;
 	}

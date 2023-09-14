@@ -9,6 +9,7 @@ import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.BugDTO;
 import in.co.hsbc.bts.model.dto.LoginDTO;
 import in.co.hsbc.bts.view.BtsView;
 
@@ -31,16 +32,17 @@ public class BtsViewImpl implements BtsView{
 		return option;
 	}
 	
-	public Bug addBug(){
-		Bug b = new Bug();
+	public BugDTO addBug(){
+		BugDTO b = new BugDTO();
 		System.out.println("Enter Bug Title:");
 		b.setTitle(sc.nextLine());
 		System.out.println("Enter Bug Description:");
 		b.setDescription(sc.nextLine());
 		System.out.println("Enter Project Id of Bug:");
-		System.out.println("Enter Your Tester Id:");
+		b.setProjectId(sc.nextInt());
 		System.out.println("Enter Bug Severity Level:");
-		return null;
+		b.setSeverityLevel(sc.nextLine());
+		return b;
 	}
 	
 	public Project addProject(){
@@ -153,24 +155,26 @@ public class BtsViewImpl implements BtsView{
 
 	@Override
 	public int displayDeveloperOptions() {
-		System.out.println("1. Add Bug");
+		System.out.println("1. View Team");
 		System.out.println("2. View All Bugs");
-		System.out.println("3. View All Teams");
+		System.out.println("-1. Exit");
 		return sc.nextInt();
 	}
 
 	@Override
 	public int displayTesterOptions() {
-		System.out.println("1. View Team");
+		System.out.println("1. Add Bug");
 		System.out.println("2. View All Bugs");
+		System.out.println("3. View All Teams");
+		System.out.println("-1. Exit");
 		return sc.nextInt();
 	}
 
 	@Override
 	public LoginDTO getLogin() {
-		System.out.print("Welcome To Bug Tracking System");
-		System.out.println("Enter Any Key To Login");
-		System.out.println("Enter -1 To Logout");
+		System.out.println("Welcome To Bug Tracking System");
+		System.out.println("1. Enter Any Key To Login");
+		System.out.println("2. Enter -1 To Logout");
 		int login_out = sc.nextInt();
 		
 		if(login_out == -1)

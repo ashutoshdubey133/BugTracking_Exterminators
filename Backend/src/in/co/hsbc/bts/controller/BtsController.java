@@ -2,24 +2,26 @@ package in.co.hsbc.bts.controller;
 
 import java.util.Set;
 
+import in.co.hsbc.bts.factory.Factory;
 import in.co.hsbc.bts.model.Bug;
+import in.co.hsbc.bts.model.BugSeverityLevel;
 import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.ProjectManager;
+import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.User;
 import in.co.hsbc.bts.model.UserType;
 import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.BugDTO;
 import in.co.hsbc.bts.model.dto.LoginDTO;
 import in.co.hsbc.bts.service.BtsService;
-import in.co.hsbc.bts.service.impl.BtsServiceImpl;
 import in.co.hsbc.bts.view.BtsView;
-import in.co.hsbc.bts.view.impl.BtsViewImpl;
 
 public class BtsController{
 
-	private static BtsService service = new BtsServiceImpl();
-	private static BtsView view = new BtsViewImpl();
+	private static final BtsService service = Factory.getBtsService();
+	private static final BtsView view = Factory.getBtsView();
 	
 	public static void main(String[] args) {
 		
@@ -152,11 +154,23 @@ public class BtsController{
 	
 	private static void handleDeveloper(User user) {
 		int devOption = 0;
+		
+		Developer dev = (Developer) user;
+		
 		do {
 			devOption = view.displayDeveloperOptions();
-
-			switch(devOption) {
 			
+			switch(devOption) {
+			case 1:
+				Team team = service.getTeamByDeveloper(dev);
+				view.viewTeam(team);
+				break;
+			
+			case 2:
+				Set<Bug> bugs = service.getBugsByDeveloper(dev);
+				view.displayBugs(bugs);
+				break;
+				
 			case -1:
 				break;
 			
@@ -166,14 +180,36 @@ public class BtsController{
 	
 	private static void handleTester(User user) {
 		int testerOption = 0;
+		
+		Tester tester = (Tester) user;
+		
 		do {
 			testerOption = view.displayTesterOptions();
-
+			
 			switch(testerOption) {
 			
+			case 1:
+				BugDTO bugDTO = view.addBug();
+				Bug bug = new Bug();
+				BugSeverityLevel bsl;
+				if(service.createBug(bugDTO.getTitle(), bug.getDescription(), service.getProjectById(bugDTO.getProjectId()), BugSeverityLevel.valueOf(bugDTO.getSeverityLevel().toLowerCase())))
+					view.showMessage("Bug created Successfully");
+				else
+					view.showError("Some Error Occured");
+				break;
+				
+			case 2:
+				Set<Bug> bugs = service.getBugsByTester(tester);
+				view.displayBugs(bugs);
+				break;
+				
+			case 3:
+				Set<Team> teams = service.getTeamsByTester(tester);
+				view.viewAllTeams(teams);
+				break;
+				
 			case -1:
 				break;
-			
 			}
 		}while(testerOption != -1);
 	}

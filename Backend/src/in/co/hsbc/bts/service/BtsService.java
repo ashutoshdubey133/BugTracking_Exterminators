@@ -7,6 +7,7 @@ import in.co.hsbc.bts.model.BugSeverityLevel;
 import in.co.hsbc.bts.model.Developer;
 import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.ProjectManager;
+import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.User;
 import in.co.hsbc.bts.model.dto.LoginDTO;
@@ -51,6 +52,10 @@ public interface BtsService {
 	boolean closeProject(int projectIdToClose);
 	Set<Bug> getBugsByProjectManager(ProjectManager pm);
 	Set<Bug> getBugsMarkedForClosingByProjectManager(ProjectManager pm);
+	Team getTeamByDeveloper(Developer dev);
+	Set<Bug> getBugsByDeveloper(Developer dev);
+	Set<Bug> getBugsByTester(Tester tester);
+	Set<Team> getTeamsByTester(Tester tester);
 	
 	
 }

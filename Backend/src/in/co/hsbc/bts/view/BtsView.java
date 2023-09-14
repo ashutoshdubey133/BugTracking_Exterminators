@@ -8,6 +8,7 @@ import in.co.hsbc.bts.model.Project;
 import in.co.hsbc.bts.model.Team;
 import in.co.hsbc.bts.model.Tester;
 import in.co.hsbc.bts.model.dto.BugAssignDTO;
+import in.co.hsbc.bts.model.dto.BugDTO;
 import in.co.hsbc.bts.model.dto.LoginDTO;
 
 public interface BtsView  extends AutoCloseable{
@@ -16,7 +17,7 @@ public interface BtsView  extends AutoCloseable{
 	int showRoles();
 	
 	//Tester
-	Bug addBug();
+	BugDTO addBug();
 	void viewAllBug(Set<Bug>b); //loop print
 	void viewAllTeams(Set<Team>t);
 	
