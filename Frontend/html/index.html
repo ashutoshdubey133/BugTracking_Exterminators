@@ -3,34 +3,62 @@
 <head>
     <title>Bug Tracking System</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"></script>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-4">
+    <div id="vantajs-bg">
+    
+    <header id="head" class=" size-large text-white text-center py-4">
         <h1>Bug Tracking System</h1>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="import.html">Import Users</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="register.html">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <div class="image-container"> 
+            <a class="navbar-brand"><img src="../static/logo.png" alt="Your Logo"></a>
+        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-        <div class="jumbotron">
+
+        <div>
             <p class="lead"></p>
             <ul>
-                <li><a href="import.html"><h3>Import Users</h3></a>Import existing users into our system.</li>
-                <li><a href="register.html"><h3>Register</h3></a>Create a new account</li>
-                <li><a href="login.html"><h3>Login</h3></a>Sign in to your existing account.</li>
+                <li style="color: aliceblue;"><a href="import.html"><h3>Import Users</h3></a>Import existing users into our system.</li>
+                <li style="color: aliceblue;"><a href="register.html"><h3>Register</h3></a>Create a new account</li>
+                <li style="color: aliceblue;"><a href="login.html"><h3>Login</h3></a>Sign in to your existing account.</li>
             </ul>
         </div>
-    <footer class="bg-dark text-white text-center py-3">
+    <footer id="foot" class="text-white text-center py-3 fixed-bottom">
         <p>&copy; BugTracking Exterminators</p>
     </footer>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+    VANTA.GLOBE({
+     el: document.getElementById("vantajs-bg"), 
+     mouseControls: true,
+     touchControls: true,
+     gyroControls: true,
+     });
+    </script>
 </body>
 </html>

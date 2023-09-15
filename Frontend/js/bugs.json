@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "description": "UI layout issue",
+        "status": "Open"
+    },
+    {
+        "id": 2,
+        "description": "API endpoint error",
+        "status": "Closed"
+    },
+    {
+        "id": 3,
+        "description": "Authentication problem",
+        "status": "Open"
+    }
+]
