@@ -7,5 +7,20 @@
     "name": "Chauhan",
     "type": "Manager",
     "email": "chauhan2023@gmail.com"
+},
+{
+    "name": "Amit",
+    "type": "Tester",
+    "email": "amit@gmail.com"
+},
+{
+    "name": "Sandeep",
+    "type": "Developer",
+    "email": "sandy@gmail.com"
+},
+{
+    "name": "Sachin",
+    "type": "Developer",
+    "email": "sachin@gmail.com"
 }
 ]

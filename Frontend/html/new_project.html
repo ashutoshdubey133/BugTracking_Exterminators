@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/styles.css">
+    <title>Create New Project</title>
+</head>
+<body>
+    <header>
+        <h1>Create New Project</h1>
+    </header>
+    <main>
+        <form id="newProjectForm">
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" required>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" required>
+            <label for="description">Description:</label>
+            <textarea id="description" rows="4" required></textarea>
+            <label for="teamMembers">Assign Team Members:</label>
+            <select id="teamMembers" multiple>
+                <!-- Options to select team members -->
+            </select>
+            <input type="text" id="newMember" placeholder="Enter a team member's name">
+            <button type="button" id="addMemberButton">+ Add member</button>
+            <button type="submit">Create Project</button>
+        </form>
+    </main>
+    <script src="../js/new_project.js"></script>
+</body>
+</html>

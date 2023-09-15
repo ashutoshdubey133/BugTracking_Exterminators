@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/report.css">
+    <title>Report a New Bug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007acc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            appearance: none;
+        }
+
+        button[type="submit"] {
+            background-color: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0058a0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Report a New Bug</h1>
+    </header>
+    <main>
+        <form id="bug-report-form">
+            <div class="form-group">
+                <label for="project-name">Project Name:</label>
+                <select id="project-name" name="project-name" required>
+                    <option value="Project A">Project A</option>
+                    <option value="Project B">Project B</option>
+                    <option value="Project C">Project C</option>
+                    <!-- Add options dynamically based on user's assigned projects -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bug-title">Title:</label>
+                <input type="text" id="bug-title" name="bug-title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bug-description">Description:</label>
+                <textarea id="bug-description" name="bug-description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="severity-level">Severity Level:</label>
+                <select id="severity-level" name="severity-level" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Submit Bug</button>
+            </div>
+        </form>
+    </main>
+    <script src="report_bug.js"></script>
+</body>
+</html>

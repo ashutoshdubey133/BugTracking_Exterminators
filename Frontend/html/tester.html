@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/tester.css">
+    <title>Bug Tracking System - Tester</title>
+</head>
+<body>
+  
+    <div class="container">
+        <header>
+            <h1>Welcome, <span id="projectManagerName">[Project Tester Name]</span></h1>
+            <p>Email: <span id="projectManagerEmail">[Project Tester Email]</span></p>
+            <p>Role: Project Tester</p>
+            <p>Last Logged-In: <span id="lastLoggedIn">[Last Logged-In Date and Time]</span></p>
+        </header>
+        <main>
+            <h2 class="welcome-message">Welcome to the Bug Tracking System</h2>
+            <p>This system helps you view your projects and report bugs effectively.</p>
+            
+            
+        </main>
+    </div>
+    <main>
+        <button id="view-projects-btn">View Projects</button>
+        <section id="projects" style="display: none;">
+            <h2>Projects</h2>
+            <ul id="project-list">
+                <!-- Project list will be populated dynamically -->
+            </ul>
+        </section>
+        <section id="bugs" style="display: none;">
+            <h2>Bugs</h2>
+            <ul id="bug-list">
+                <!-- Bug list will be populated dynamically -->
+            </ul>
+            <a href="report_bug.html">Report a New Bug</a>
+        </section>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>
